@@ -5,6 +5,7 @@ import Avatar from "../../components/common/Avatar"
 import RoundIcons from "../../components/common/RoundIcons"
 import worldIcon from "../../assets/icons/world.png"
 import settingsIcon from "../../assets/icons/settings.png"
+import avatar from '/avatares/avatar.png'
 
 const NavBar = () => {
   return (
@@ -20,7 +21,7 @@ const NavBar = () => {
         <RoundIcons icon={worldIcon} />
         <RoundIcons icon={settingsIcon} />
         <Box sx={{ padding: "0px 10px" }}>
-          <Avatar />
+          <Avatar img={avatar} size={40} />
         </Box>
       </Box>
     </Box>

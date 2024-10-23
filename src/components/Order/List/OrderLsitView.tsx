@@ -1,6 +1,7 @@
 import { Box } from "@mui/material"
 import BadgeGroup from "../common/BadgeGroup"
 import BtnGroup from "../common/BtnGroup"
+import Assignments from "./Assignments/Assignments"
 
 const OrderListView = () => {
   return (
@@ -9,7 +10,14 @@ const OrderListView = () => {
         <BadgeGroup />
         <BtnGroup />
       </Box>
-      <Box sx={{ width: '100%', height: '100%', background: 'yellow' }}></Box>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: '40px', width: '100%', height: '100%' }}>
+        <Box sx={{ display: 'flex', flex: 1, height: '100%', background: 'green' }}>
+
+        </Box>
+        <Box sx={{ width: '317px', height: '100%' }}>
+          <Assignments />
+        </Box>
+      </Box>
     </Box>
   )
 }

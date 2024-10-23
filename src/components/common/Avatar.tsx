@@ -1,10 +1,15 @@
 import { Box } from "@mui/material"
-import avatar from "../../assets/avatar.png"
 
-const Avatar = () => {
+
+interface AvatarProps {
+  img: string,
+  size?: number
+}
+
+const Avatar = ({ img, size = 40 }: AvatarProps) => {
   return (
-    <Box sx={{ width: 40, height: 40, borderRadius: '100%', overflow: 'hidden' }}>
-      <img src={avatar} alt="avatar-img" />
+    <Box sx={{ width: size, height: size, borderRadius: '100%', overflow: 'hidden' }}>
+      <img src={img} alt="avatar-img" />
     </Box>
   )
 }
