@@ -14,7 +14,7 @@ const Layout = () => {
         <Box sx={{ height: 85, width: '100%' }}>
           <NavBar />
         </Box>
-        <Box sx={{ background: "pink", width: '100%', height: '100%' }}>
+        <Box sx={{ width: '100%', height: '100%', padding: '60px', background: '#F9FAFB', borderRadius: '50px 0 0 0', }}>
           <Outlet />
         </Box>
         <Footer />
