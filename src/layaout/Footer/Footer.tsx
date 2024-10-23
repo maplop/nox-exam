@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material"
 
 const Footer = () => {
   return (
-    <Box sx={{ margin: '0 auto', padding: '10px', backgroundColor: '#F7FAFC' }}>
+    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px', backgroundColor: '#F7FAFC' }}>
       <Typography sx={{
         fontSize: 12,
         fontWeight: 400,

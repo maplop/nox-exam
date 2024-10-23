@@ -10,7 +10,7 @@ const TableView = () => {
         <EntriesPerPages />
         <Search />
       </Box>
-      <Box sx={{ padding: '12px' }}>
+      <Box>
         <TableComponent />
       </Box>
     </Box>

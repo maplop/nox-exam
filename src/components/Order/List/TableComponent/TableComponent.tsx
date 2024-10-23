@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, TablePagination, styled, Box } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, styled, Box, IconButton } from '@mui/material';
 import { tableData, Status } from '../../../../data/tableData';
 import Badge from './Badge';
 import Avatar from '../../../common/Avatar';
+import { ArrowBack, ArrowForward } from '@mui/icons-material';
 
 const statusStyles: Record<Status, { backgroundColor: string; color: string }> = {
   PENDING: { backgroundColor: 'transparent', color: '#1A202C' },
@@ -24,7 +25,7 @@ const TableComponent: React.FC = () => {
 
   return (
     <>
-      <TableContainer sx={{ width: '100%', overflowX: 'auto' }}>
+      <TableContainer sx={{ padding: '12px' }}>
         <Table>
           <TableHead>
             <TableRow>
@@ -92,14 +93,45 @@ const TableComponent: React.FC = () => {
         </Table>
       </TableContainer>
 
-      <TablePagination
-        component="div"
-        count={tableData.length}
-        page={page}
-        onPageChange={handleChangePage}
-        rowsPerPage={rowsPerPage}
-        rowsPerPageOptions={[]}
-      />
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 12px', marginTop: '20px' }}>
+        <BtnPagination
+          onClick={() => handleChangePage(null, page - 1)}
+          disabled={page === 0}
+          sx={{ span: { color: 'rgba(255, 117, 0, 0.5)' }, svg: { color: 'rgba(255, 117, 0, 0.5)' } }}
+        >
+          <ArrowBack />
+          <span>Preview</span>
+        </BtnPagination>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+          {Array.from({ length: 3 }).map((_, index) => (
+            <Button
+              key={index}
+              sx={{
+                backgroundColor: index === 0 ? '#FF7500' : '#FFF',
+                color: index === 0 ? '#fff' : '#FF7500',
+                borderRadius: '6px',
+                width: 35,
+                height: 32,
+                minWidth: 0,
+                padding: 0,
+                fontSize: '14px',
+                fontWeight: 600,
+                lineHeight: '20px'
+              }}
+            >
+              {index + 1}
+            </Button>
+          ))}
+        </Box>
+        <BtnPagination
+          onClick={() => handleChangePage(null, page + 1)}
+          disabled={page >= Math.ceil(tableData.length / rowsPerPage) - 1}
+          sx={{ span: { color: '#FF7500' }, svg: { color: '#FF7500' } }}
+        >
+          <span>Next</span>
+          <ArrowForward />
+        </BtnPagination>
+      </Box >
     </>
   );
 };
@@ -130,4 +162,14 @@ const TCellBody = styled(TableCell)(() => ({
   textAlign: 'left',
   color: '#718096',
   border: 'none'
+}))
+
+const BtnPagination = styled(IconButton)(() => ({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '8px',
+  padding: '16px',
+  fontSize: 16,
+  fontWeight: 600,
+  lineHeight: '24px',
 }))
