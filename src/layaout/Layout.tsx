@@ -7,7 +7,7 @@ import { Outlet } from "react-router-dom"
 const Layout = () => {
   return (
     <Stack direction="row" sx={{ width: "100%", height: "100%" }}>
-      <Box sx={{ background: "yellow", width: 289, height: "100%" }}>
+      <Box sx={{ height: "100%" }}>
         <SideMenu />
       </Box>
       <Stack sx={{ display: 'flex', justifyContent: 'space-between', width: '100%', height: "100%" }}>
