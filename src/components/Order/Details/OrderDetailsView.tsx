@@ -13,7 +13,8 @@ const OrderDetailsView = () => {
         </Wrapper>
         <Box bgcolor={"#FFF"} sx={{
           minWidth: '498px', borderRadius: '20px',
-          padding: '30px 35px'
+          padding: '30px 35px',
+          boxShadow: '0px 5px 80px 0px rgba(114, 114, 114, 0.05)'
         }}>
           <ShippingAddressComponent />
         </Box>
@@ -37,6 +38,6 @@ const Wrapper = styled(Box)(() => ({
   borderRadius: '20px',
   padding: '30px 35px',
   backgroundColor: '#FFF',
-  border: '1px solid #000'
+  boxShadow: '0px 5px 80px 0px rgba(114, 114, 114, 0.05)'
 }))
 
