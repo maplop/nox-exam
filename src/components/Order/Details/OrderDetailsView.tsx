@@ -6,7 +6,7 @@ import StatusComponent from "./StatusComponent/StatusComponent"
 
 const OrderDetailsView = () => {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px', height: '100%', backgroundColor: 'red' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px', height: '100%' }}>
       <Stack direction={"row"} gap={"40px"}>
         <Wrapper>
           <OrderUserComponent />
