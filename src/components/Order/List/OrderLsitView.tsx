@@ -11,7 +11,7 @@ const OrderListView = () => {
         <TableFilter />
         <TableView />
       </Box>
-      <Box sx={{ width: '317px', height: '100%', }}>
+      <Box sx={{ width: '317px', height: '100%' }}>
         <Assignments />
       </Box>
     </Box>
