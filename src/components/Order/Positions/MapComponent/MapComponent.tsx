@@ -8,10 +8,11 @@ import { mapData } from '../../../../data/mapData';
 
 interface MapComponentProps {
   handleOpenModal: () => void
+  handleShowDetails: () => void
 }
 
 
-const MapComponent = ({ handleOpenModal }: MapComponentProps) => {
+const MapComponent = ({ handleOpenModal, handleShowDetails }: MapComponentProps) => {
   const [activeMarker, setActiveMarker] = useState<number | null>(null);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
@@ -69,6 +70,7 @@ const MapComponent = ({ handleOpenModal }: MapComponentProps) => {
               onClose={handleMouseLeave}
               info={data.info}
               handleOpenModal={handleOpenModal}
+              handleShowDetails={handleShowDetails}
             />
           )}
         </Box>

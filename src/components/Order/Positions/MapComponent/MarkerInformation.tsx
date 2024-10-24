@@ -6,10 +6,11 @@ interface MarkerInformationProps {
   onClose: () => void;
   info: InfoProps;
   handleOpenModal: () => void
+  handleShowDetails: () => void
 }
 
 
-const MarkerInformation = ({ anchorEl, onClose, info, handleOpenModal }: MarkerInformationProps) => {
+const MarkerInformation = ({ anchorEl, onClose, info, handleOpenModal, handleShowDetails }: MarkerInformationProps) => {
 
   const open = Boolean(anchorEl);
 
@@ -68,6 +69,7 @@ const MarkerInformation = ({ anchorEl, onClose, info, handleOpenModal }: MarkerI
               border: '1px solid #FF7500',
               color: '#FF7500'
             }}
+            onClick={handleShowDetails}
           >
             View Details
           </Btn>

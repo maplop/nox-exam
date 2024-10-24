@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 export const useOrderView = () => {
   const [selectedButton, setSelectedButton] = useState<number | null>(0);
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const [showDetailsView, setShowDetailsView] = useState<boolean>(false);
 
   useEffect(() => {
     if (openModal) {
@@ -34,5 +35,7 @@ export const useOrderView = () => {
     openModal,
     handleOpenModal,
     handleCloseModal,
+    showDetailsView,
+    setShowDetailsView,
   };
 };
