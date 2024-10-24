@@ -44,7 +44,7 @@ const StatusComponent = () => {
           Change Status
         </Button>
       </Box>
-      <Box sx={{ padding: '10px 0px' }}>
+      <Box sx={{ padding: '10px 0px', overflowY: 'auto' }}>
         <StatusTable />
       </Box>
     </Box>

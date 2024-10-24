@@ -18,7 +18,7 @@ const OrderDetailsView = () => {
           <ShippingAddressComponent />
         </Box>
       </Stack>
-      <Stack direction={"row"} gap={"40px"}>
+      <Stack direction={"row"} gap={"40px"} sx={{ height: '100%' }}>
         <Wrapper>
           <ProductsComponent />
         </Wrapper>
@@ -33,8 +33,10 @@ export default OrderDetailsView
 
 const Wrapper = styled(Box)(() => ({
   width: '100%',
+  height: '100%',
   borderRadius: '20px',
   padding: '30px 35px',
   backgroundColor: '#FFF',
+  border: '1px solid #000'
 }))
 
