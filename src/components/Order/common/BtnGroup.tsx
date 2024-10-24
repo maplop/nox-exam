@@ -1,14 +1,13 @@
-import { useState } from "react";
 import { Box, Button, ButtonGroup } from "@mui/material";
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import locationIcon from '../../../assets/icons/location.png'
 
-const BtnGroup = () => {
-  const [selectedButton, setSelectedButton] = useState<number | null>(0);
+interface BtnGroupProps {
+  selectedButton: number | null,
+  handleButtonClick: (index: number) => void
+}
 
-  const handleButtonClick = (index: number) => {
-    setSelectedButton(index);
-  };
+const BtnGroup = ({ selectedButton, handleButtonClick }: BtnGroupProps) => {
 
   return (
     <Box sx={{ padding: '10px' }}>
