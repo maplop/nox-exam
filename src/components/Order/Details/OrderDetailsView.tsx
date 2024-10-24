@@ -35,6 +35,7 @@ const Wrapper = styled(Box)(() => ({
   width: '100%',
   borderRadius: '20px',
   padding: '30px 35px',
-  backgroundColor: '#FFF'
+  backgroundColor: '#FFF',
+  border: '1px solid black'
 }))
 

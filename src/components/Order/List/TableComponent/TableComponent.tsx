@@ -26,7 +26,7 @@ const TableComponent: React.FC = () => {
   return (
     <>
       <TableContainer sx={{ padding: '12px' }}>
-        <Table>
+        <Table stickyHeader>
           <TableHead>
             <TableRow>
               <TCell>ORDER ID</TCell>

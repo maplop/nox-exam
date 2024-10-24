@@ -10,7 +10,7 @@ const Footer = () => {
         textAlign: 'left',
         color: '#737791'
       }}>
-        © 2024 VoyPati Made by <a href="https://noxcreation.dev/es" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>NOX Creation</a>
+        © 2024 VoyPati Made by <a href="https://noxcreation.dev/es" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>NOX Creation</a>
       </Typography>
     </Box >
   )
