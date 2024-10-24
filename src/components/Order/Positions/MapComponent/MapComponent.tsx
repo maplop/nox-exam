@@ -6,18 +6,23 @@ import MarkerInformation from './MarkerInformation';
 import { useState } from 'react';
 import { mapData } from '../../../../data/mapData';
 
-const MapComponent = () => {
+interface MapComponentProps {
+  handleOpenModal: () => void
+}
+
+
+const MapComponent = ({ handleOpenModal }: MapComponentProps) => {
   const [activeMarker, setActiveMarker] = useState<number | null>(null);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const handleMouseEnter = (event: React.MouseEvent<HTMLElement>, dataId: number) => {
-    setAnchorEl(event.currentTarget); // Guardar el elemento HTML como el anclaje del Popover
-    setActiveMarker(dataId); // Guardar el ID del marcador activo
+    setAnchorEl(event.currentTarget);
+    setActiveMarker(dataId);
   };
 
   const handleMouseLeave = () => {
-    setAnchorEl(null); // Limpiar el anclaje
-    setActiveMarker(null); // Limpiar el marcador activo
+    setAnchorEl(null);
+    setActiveMarker(null);
   };
 
   return (
@@ -39,7 +44,7 @@ const MapComponent = () => {
           left: `${data.x}%`,
           transform: 'translate(-50%, -50%)',
         }}
-          onMouseEnter={(e) => handleMouseEnter(e, data.id)} // Pasamos el evento y el ID del marcador
+          onMouseEnter={(e) => handleMouseEnter(e, data.id)}
           onMouseLeave={handleMouseLeave}
         >
           <Typography sx={{
@@ -63,6 +68,7 @@ const MapComponent = () => {
               anchorEl={anchorEl}
               onClose={handleMouseLeave}
               info={data.info}
+              handleOpenModal={handleOpenModal}
             />
           )}
         </Box>

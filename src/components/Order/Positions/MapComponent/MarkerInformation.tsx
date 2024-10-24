@@ -5,10 +5,11 @@ interface MarkerInformationProps {
   anchorEl: HTMLElement | null;
   onClose: () => void;
   info: InfoProps;
+  handleOpenModal: () => void
 }
 
 
-const MarkerInformation = ({ anchorEl, onClose, info }: MarkerInformationProps) => {
+const MarkerInformation = ({ anchorEl, onClose, info, handleOpenModal }: MarkerInformationProps) => {
 
   const open = Boolean(anchorEl);
 
@@ -62,6 +63,7 @@ const MarkerInformation = ({ anchorEl, onClose, info }: MarkerInformationProps) 
           <Btn
             variant="outlined"
             size="small"
+            disableRipple
             sx={{
               border: '1px solid #FF7500',
               color: '#FF7500'
@@ -72,10 +74,12 @@ const MarkerInformation = ({ anchorEl, onClose, info }: MarkerInformationProps) 
           <Btn
             variant="contained"
             size="small"
+            disableRipple
             sx={{
               border: '1px solid #FF7500',
               color: '#FFF'
             }}
+            onClick={handleOpenModal}
           >
             Assign
           </Btn>
