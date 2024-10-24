@@ -17,7 +17,7 @@ const TableComponent: React.FC = () => {
   const [page, setPage] = useState(0);
   const rowsPerPage = 5;
 
-  const handleChangePage = (event: unknown, newPage: number) => {
+  const handleChangePage = (newPage: number) => {
     setPage(newPage);
   };
 
@@ -95,7 +95,7 @@ const TableComponent: React.FC = () => {
 
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 12px', marginTop: '20px' }}>
         <BtnPagination
-          onClick={() => handleChangePage(null, page - 1)}
+          onClick={() => handleChangePage(page - 1)}
           disabled={page === 0}
           sx={{ span: { color: 'rgba(255, 117, 0, 0.5)' }, svg: { color: 'rgba(255, 117, 0, 0.5)' } }}
         >
@@ -124,7 +124,7 @@ const TableComponent: React.FC = () => {
           ))}
         </Box>
         <BtnPagination
-          onClick={() => handleChangePage(null, page + 1)}
+          onClick={() => handleChangePage(page + 1)}
           disabled={page >= Math.ceil(tableData.length / rowsPerPage) - 1}
           sx={{ span: { color: '#FF7500' }, svg: { color: '#FF7500' } }}
         >
