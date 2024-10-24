@@ -10,7 +10,7 @@ const ProductsTable: React.FC = () => {
           <TableHead>
             <TableRow>
               <TCell>NAME</TCell>
-              <TCell>QUANTITY</TCell>
+              <TCell>COUNT</TCell>
               <TCell>PRICE</TCell>
             </TableRow>
           </TableHead>
@@ -36,7 +36,7 @@ const ProductsTable: React.FC = () => {
                     </Box>
                   </Box>
                 </TCellBody>
-                <TCellBody>{product.quantity}</TCellBody>
+                <TCellBody>{product.count}</TCellBody>
                 <TCellBody>{product.price}</TCellBody>
               </TableRow>
             ))}
