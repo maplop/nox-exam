@@ -19,13 +19,13 @@ const BtnGroup = ({ selectedButton, handleButtonClick }: BtnGroupProps) => {
           disableRipple
           onClick={() => handleButtonClick(0)}
           sx={{
-            backgroundColor: selectedButton === 0 ? '#EDF2F7' : 'transparent',
+            backgroundColor: selectedButton === 0 ? '#EDF2F7' : '#FFF',
             borderColor: '#EDF2F7',
             borderRadius: '16px',
             width: '48px',
             height: '40px',
             '&:hover': {
-              backgroundColor: selectedButton === 0 ? '#EDF2F7' : 'transparent',
+              backgroundColor: selectedButton === 0 ? '#EDF2F7' : '#FFF',
             },
           }}
         >
@@ -35,13 +35,13 @@ const BtnGroup = ({ selectedButton, handleButtonClick }: BtnGroupProps) => {
           disableRipple
           onClick={() => handleButtonClick(1)}
           sx={{
-            backgroundColor: selectedButton === 1 ? '#EDF2F7' : 'transparent',
+            backgroundColor: selectedButton === 1 ? '#EDF2F7' : '#FFF',
             borderColor: '#EDF2F7',
             borderRadius: '16px',
             width: '48px',
             height: '40px',
             '&:hover': {
-              backgroundColor: selectedButton === 1 ? '#EDF2F7' : 'transparent',
+              backgroundColor: selectedButton === 1 ? '#EDF2F7' : '#FFF',
             },
           }}
         >

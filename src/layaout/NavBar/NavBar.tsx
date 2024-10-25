@@ -1,5 +1,5 @@
 import { Box } from "@mui/material"
-import Breadcrumb from "../../components/common/Breadcrumb/Breadcrumb"
+import BreadcrumbsComponent from "../../components/common/Breadcrumb"
 import SearchInput from "../../components/common/SearchInput"
 import Avatar from "../../components/common/Avatar"
 import RoundIcons from "../../components/common/RoundIcons"
@@ -15,7 +15,7 @@ const NavBar = () => {
       alignItems: 'center',
       padding: '20px',
     }}>
-      <Breadcrumb />
+      <BreadcrumbsComponent />
       <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
         <SearchInput />
         <RoundIcons icon={worldIcon} />

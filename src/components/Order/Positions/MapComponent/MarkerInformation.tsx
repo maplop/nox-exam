@@ -1,18 +1,19 @@
 import { Box, Button, Popover, styled, Typography } from "@mui/material"
 import { InfoProps } from "../../../../data/mapData";
+import { useNavigate } from "react-router-dom";
+import ROUTES from "../../../../routes/routes";
 
 interface MarkerInformationProps {
   anchorEl: HTMLElement | null;
   onClose: () => void;
   info: InfoProps;
   handleOpenModal: () => void
-  handleShowDetails: () => void
 }
 
-
-const MarkerInformation = ({ anchorEl, onClose, info, handleOpenModal, handleShowDetails }: MarkerInformationProps) => {
+const MarkerInformation = ({ anchorEl, onClose, info, handleOpenModal }: MarkerInformationProps) => {
 
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
 
   return (
     <Popover
@@ -35,9 +36,26 @@ const MarkerInformation = ({ anchorEl, onClose, info, handleOpenModal, handleSho
           borderRadius: '5px',
           border: '1px solid #CBD5E0',
           padding: '10px',
+          boxShadow: 'none',
+          position: 'relative',
+          overflow: 'visible',
+          background: '#FFF',
         }
       }}
     >
+      <Box
+        sx={{
+          position: 'absolute',
+          top: -9,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '0px',
+          height: '0px',
+          borderLeft: '9px solid transparent',
+          borderRight: '9px solid transparent',
+          borderBottom: '9px solid white',
+        }}
+      />
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         <Typography sx={{
           fontFamily: "'Inter', sans-serif",
@@ -69,7 +87,7 @@ const MarkerInformation = ({ anchorEl, onClose, info, handleOpenModal, handleSho
               border: '1px solid #FF7500',
               color: '#FF7500'
             }}
-            onClick={handleShowDetails}
+            onClick={() => navigate(ROUTES.ORDERS.DETAILS)}
           >
             View Details
           </Btn>

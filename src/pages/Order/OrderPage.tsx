@@ -1,4 +1,4 @@
-import OrderView from "../components/Order/OrderView"
+import OrderView from "../../components/Order/OrderView"
 
 const OrderPage = () => {
   return (

@@ -1,14 +1,19 @@
 import { Box, Typography } from "@mui/material";
 import { ReactNode } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface SimpleMenuItemProps {
   icon: ReactNode;
   name: string;
-  isSelected: boolean;
-  onClick: () => void;
+  url: string;
 }
 
-const SimpleMenuItem: React.FC<SimpleMenuItemProps> = ({ icon, name, isSelected, onClick }) => {
+const SimpleMenuItem: React.FC<SimpleMenuItemProps> = ({ icon, name, url }) => {
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isSelected = location.pathname.includes(url);
+
   return (
     <Box
       sx={{
@@ -24,7 +29,7 @@ const SimpleMenuItem: React.FC<SimpleMenuItemProps> = ({ icon, name, isSelected,
           backgroundColor: !isSelected ? '#FFF9EC' : undefined,
         }
       }}
-      onClick={onClick}
+      onClick={() => navigate(url)}
     >
       <Box sx={{ display: 'flex', alignItems: 'center', color: isSelected ? '#FF7500' : '#A0AEC0' }}>
         {icon}
