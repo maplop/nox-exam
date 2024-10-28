@@ -15,23 +15,16 @@ const EntriesPerPages = () => {
         <MenuItem value="50">50</MenuItem>
         <MenuItem value="100">100</MenuItem>
       </SelectInput>
-      <Typography sx={{
-        fontSize: '16px',
-        fontWeight: 400,
-        lineHeight: '24px',
-        color: '#737791',
-      }}>
+      <Text>
         Entries per page
-      </Typography>
+      </Text>
     </Box>
   );
 };
 
 export default EntriesPerPages;
 
-
-
-const SelectInput = styled(Select)(() => ({
+const SelectInput = styled(Select)(({ theme }) => ({
 
   '.MuiSelect-outlined': {
     padding: 0,
@@ -63,10 +56,33 @@ const SelectInput = styled(Select)(() => ({
 
   input: {
     color: '#2D3748',
-    fontSize: 14,
+    fontSize: '14px',
     fontWeight: 400,
     lineHeight: '20px',
     textAlign: 'left',
   },
+
+  [theme.breakpoints.down('xl')]: {
+
+    '&.MuiOutlinedInput-root': {
+      width: 76,
+      height: 30,
+    },
+
+    input: {
+      fontSize: '12px',
+    },
+  }
 }))
 
+const Text = styled(Typography)(({ theme }) => ({
+  fontSize: '16px',
+  fontWeight: 400,
+  lineHeight: '24px',
+  color: '#737791',
+
+  [theme.breakpoints.down('xl')]: {
+    fontSize: '14px',
+    lineHeight: '22px',
+  }
+}))

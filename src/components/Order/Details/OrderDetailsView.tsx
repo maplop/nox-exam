@@ -1,4 +1,5 @@
-import { Box, Stack, styled } from "@mui/material"
+import { Box, styled } from "@mui/material"
+import Grid from '@mui/material/Grid2';
 import OrderUserComponent from "./OrderUserComponent/OrderUserComponent"
 import ShippingAddressComponent from "./ShippingAddressComponent/ShippingAddressComponent"
 import ProductsComponent from "./ProductsComponent/ProductsComponent"
@@ -6,38 +7,52 @@ import StatusComponent from "./StatusComponent/StatusComponent"
 
 const OrderDetailsView = () => {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px', height: '100%' }}>
-      <Stack direction={"row"} gap={"40px"}>
-        <Wrapper>
-          <OrderUserComponent />
-        </Wrapper>
-        <Box bgcolor={"#FFF"} sx={{
-          minWidth: '498px', borderRadius: '20px',
-          padding: '30px 35px',
-          boxShadow: '0px 5px 80px 0px rgba(114, 114, 114, 0.05)'
-        }}>
-          <ShippingAddressComponent />
-        </Box>
-      </Stack>
-      <Stack direction={"row"} gap={"40px"} sx={{ height: '100%' }}>
-        <Wrapper>
-          <ProductsComponent />
-        </Wrapper>
-        <Wrapper>
-          <StatusComponent />
-        </Wrapper>
-      </Stack>
-    </Box>
+    <OrderDetailsWrapper>
+      <Grid container spacing={{ lg: 4, xl: 5 }}>
+        <Grid size={8} >
+          <Wrapper>
+            <OrderUserComponent />
+          </Wrapper>
+        </Grid>
+        <Grid size={4}>
+          <Wrapper>
+            <ShippingAddressComponent />
+          </Wrapper>
+        </Grid>
+      </Grid>
+      <Grid container spacing={{ lg: 4, xl: 5 }}>
+        <Grid size={6}>
+          <Wrapper>
+            <ProductsComponent />
+          </Wrapper>
+        </Grid>
+        <Grid size={6}>
+          <Wrapper>
+            <StatusComponent />
+          </Wrapper>
+        </Grid>
+      </Grid>
+    </OrderDetailsWrapper >
   )
 }
 export default OrderDetailsView
 
-const Wrapper = styled(Box)(() => ({
-  width: '100%',
+const OrderDetailsWrapper = styled(Box)(() => ({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '20px',
+  height: '100%',
+}))
+
+const Wrapper = styled(Box)(({ theme }) => ({
   height: '100%',
   borderRadius: '20px',
   padding: '30px 35px',
   backgroundColor: '#FFF',
-  boxShadow: '0px 5px 80px 0px rgba(114, 114, 114, 0.05)'
+  boxShadow: '0px 5px 80px 0px rgba(114, 114, 114, 0.05)',
+
+  [theme.breakpoints.down('xl')]: {
+    padding: '24px 28px',
+  }
 }))
 

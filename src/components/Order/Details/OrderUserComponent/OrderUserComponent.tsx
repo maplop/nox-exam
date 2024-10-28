@@ -1,30 +1,15 @@
-import { Box, Typography } from "@mui/material"
+import { Box } from "@mui/material"
 import Grid from '@mui/material/Grid2';
 import FormControl from "./FormControl"
+import SectionTitle from "../../../common/SectionTitle";
 
 const OrderUserComponent = () => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-      <>
-        <Typography sx={{
-          fontSize: '20px',
-          fontWeight: 600,
-          lineHeight: '30px',
-          textAlign: 'left',
-          color: '#05004E'
-        }}>
-          Order User
-        </Typography>
-        <Typography sx={{
-          fontSize: '16px',
-          fontWeight: 400,
-          lineHeight: '24px',
-          textAlign: 'left',
-          color: '#737791'
-        }}>
-          User creating the order
-        </Typography>
-      </>
+      <SectionTitle
+        title="Order User"
+        subtitle="User creating the order"
+      />
       <Box sx={{ padding: "10px 0px" }}>
         <Box sx={{ padding: '10px 0px' }}>
           <FormControl label="Username" value="rolando" />

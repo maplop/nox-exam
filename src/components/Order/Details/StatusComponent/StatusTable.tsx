@@ -52,7 +52,7 @@ const StatusTable: React.FC = () => {
 
 export default StatusTable;
 
-const TCell = styled(TableCell)(() => ({
+const TCell = styled(TableCell)(({ theme }) => ({
   padding: 0,
   paddingLeft: "24px",
   minWidth: '176.67px',
@@ -64,10 +64,16 @@ const TCell = styled(TableCell)(() => ({
   letterSpacing: '0.05em',
   textAlign: 'left',
   color: '#4A5568',
-  border: 'none'
+  border: 'none',
+
+  [theme.breakpoints.down('xl')]: {
+    paddingLeft: "20px",
+    minWidth: '150px',
+    height: 32,
+  }
 }))
 
-const TCellBody = styled(TableCell)(() => ({
+const TCellBody = styled(TableCell)(({ theme }) => ({
   padding: 0,
   height: '52px',
   minWidth: '176.67px',
@@ -76,5 +82,11 @@ const TCellBody = styled(TableCell)(() => ({
   lineHeight: '20px',
   textAlign: 'left',
   color: '#718096',
-  border: 'none'
+  border: 'none',
+
+  [theme.breakpoints.down('xl')]: {
+    fontSize: 12,
+    minWidth: '150px',
+    height: 46,
+  }
 }))

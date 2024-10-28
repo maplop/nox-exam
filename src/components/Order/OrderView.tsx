@@ -1,4 +1,4 @@
-import { Box } from "@mui/material"
+import { Box, styled } from "@mui/material"
 import OrderListView from "./List/OrderLsitView"
 import { useOrderView } from "./useOrderView"
 import BtnGroup from "./common/BtnGroup"
@@ -15,12 +15,12 @@ const OrderView = () => {
   return (
     <>
       {!isDetailsPage ? (
-        <Box sx={{ width: '100%', height: '100%', }}>
-          <Box sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '10px', width: '100%', height: '60px', marginBottom: '20px' }}>
+        <Box sx={{ width: '100%', height: '100%' }}>
+          <Filterwrapper>
             <BadgeGroup />
             <BtnGroup selectedButton={selectedButton} handleButtonClick={handleButtonClick} />
-          </Box>
-          <Box sx={{ height: '651px' }}>
+          </Filterwrapper>
+          <Box>
             {selectedButton === 0 ? <OrderListView /> : <OrderPositionsView handleOpenModal={handleOpenModal} />}
           </Box>
           {openModal && <AssignModal open={openModal} handleClose={handleCloseModal} />}
@@ -32,3 +32,17 @@ const OrderView = () => {
   )
 }
 export default OrderView
+
+const Filterwrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'flex-end',
+  alignItems: 'center',
+  gap: '10px',
+  width: '100%',
+  height: '60px',
+  marginBottom: '20px',
+
+  [theme.breakpoints.down('xl')]: {
+    height: 'auto',
+  }
+}))

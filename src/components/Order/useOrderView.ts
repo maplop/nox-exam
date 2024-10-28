@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const useOrderView = () => {
-  const [selectedButton, setSelectedButton] = useState<number | null>(0);
+  const [selectedButton, setSelectedButton] = useState<number>(0);
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   useEffect(() => {

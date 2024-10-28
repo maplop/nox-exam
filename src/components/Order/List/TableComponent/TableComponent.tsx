@@ -25,7 +25,7 @@ const TableComponent: React.FC = () => {
 
   return (
     <>
-      <TableContainer sx={{ padding: '12px' }}>
+      <TableWrapper>
         <Table stickyHeader>
           <TableHead>
             <TableRow>
@@ -67,109 +67,168 @@ const TableComponent: React.FC = () => {
                   </Box>
                 </TCellBody>
                 <TCellBody>
-                  <Button
+                  <AssignBtn
                     disableRipple
                     variant="contained"
                     color="primary"
                     size="small"
-                    sx={{
-                      height: 24,
-                      padding: '0px 8px',
-                      textTransform: 'none',
-                      borderRadius: '16px',
-                      boxShadow: 'none',
-                      color: "#FFF",
-                      fontSize: '12px',
-                      fontWeight: 600,
-                      lineHeight: '16px',
-                    }}
                   >
                     Assign
-                  </Button>
+                  </AssignBtn>
                 </TCellBody>
               </TableRow>
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
+      </TableWrapper>
 
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 12px', marginTop: '20px' }}>
+      <PaginationWrapper>
         <BtnPagination
           onClick={() => handleChangePage(page - 1)}
-          disabled={page === 0}
-          sx={{ span: { color: 'rgba(255, 117, 0, 0.5)' }, svg: { color: 'rgba(255, 117, 0, 0.5)' } }}
+          isDisable={page === 0}
         >
           <ArrowBack />
           <span>Preview</span>
         </BtnPagination>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
           {Array.from({ length: 3 }).map((_, index) => (
-            <Button
-              key={index}
-              sx={{
-                backgroundColor: index === 0 ? '#FF7500' : '#FFF',
-                color: index === 0 ? '#fff' : '#FF7500',
-                borderRadius: '6px',
-                width: 35,
-                height: 32,
-                minWidth: 0,
-                padding: 0,
-                fontSize: '14px',
-                fontWeight: 600,
-                lineHeight: '20px'
-              }}
-            >
+            <PageMarker key={index} currentPage={index === 0}>
               {index + 1}
-            </Button>
+            </PageMarker>
           ))}
         </Box>
         <BtnPagination
           onClick={() => handleChangePage(page + 1)}
-          disabled={page >= Math.ceil(tableData.length / rowsPerPage) - 1}
-          sx={{ span: { color: '#FF7500' }, svg: { color: '#FF7500' } }}
+          isDisable={false}
         >
           <span>Next</span>
           <ArrowForward />
         </BtnPagination>
-      </Box >
+      </PaginationWrapper >
     </>
   );
 };
 
 export default TableComponent;
 
-const TCell = styled(TableCell)(() => ({
+const TableWrapper = styled(TableContainer)(({ theme }) => ({
+  padding: '12px',
+  maxWidth: 'calc(100vw - 858px)',
+  overflowX: 'auto',
+
+  [theme.breakpoints.down('xl')]: {
+    padding: '0px',
+    maxWidth: 'calc(100vw - 713.5px)',
+  }
+}))
+
+const TCell = styled(TableCell)(({ theme }) => ({
   padding: 0,
   paddingLeft: 24,
   minWidth: '176.67px',
-  height: 40,
   whiteSpace: 'nowrap',
-  fontSize: 12,
+  width: 'auto',
+  height: 40,
+  fontSize: '12px',
   fontWeight: 700,
   lineHeight: '16px',
   letterSpacing: '0.05em',
   textAlign: 'left',
   color: '#4A5568',
-  border: 'none'
+  border: 'none',
+
+  [theme.breakpoints.down('xl')]: {
+    height: 36,
+  }
 }))
 
-const TCellBody = styled(TableCell)(() => ({
+const TCellBody = styled(TableCell)(({ theme }) => ({
   padding: '14px 0px 14px 24px',
   minWidth: '176.67px',
-  fontSize: 14,
+  fontSize: '14px',
   fontWeight: 400,
   lineHeight: '20px',
   textAlign: 'left',
   color: '#718096',
-  border: 'none'
+  border: 'none',
+
+  [theme.breakpoints.down('xl')]: {
+    height: 36,
+    fontSize: '13px',
+  }
 }))
 
-const BtnPagination = styled(IconButton)(() => ({
+const AssignBtn = styled(Button)(({ theme }) => ({
+  height: 24,
+  padding: '0px 8px',
+  textTransform: 'none',
+  borderRadius: '16px',
+  boxShadow: 'none',
+  color: "#FFF",
+  fontSize: '12px',
+  fontWeight: 600,
+  lineHeight: '16px',
+
+  [theme.breakpoints.down('xl')]: {
+    height: 22,
+    fontSize: '11px',
+  }
+}))
+
+const PaginationWrapper = styled(Box)(() => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  padding: '10px 12px',
+  marginTop: '32px'
+}))
+
+const PageMarker = styled(Button)<{ currentPage: boolean }>(({ theme, currentPage }) => ({
+  backgroundColor: currentPage ? '#FF7500' : '#FFF',
+  color: currentPage ? '#fff' : '#FF7500',
+  borderRadius: '6px',
+  width: 35,
+  height: 32,
+  minWidth: 0,
+  padding: 0,
+  fontSize: '14px',
+  fontWeight: 600,
+  lineHeight: '20px',
+
+  [theme.breakpoints.down('xl')]: {
+    width: 28,
+    height: 26,
+    fontSize: '13px',
+  }
+}))
+
+const BtnPagination = styled(IconButton)<{ isDisable: boolean }>(({ theme, isDisable }) => ({
   display: 'flex',
   alignItems: 'center',
   gap: '8px',
   padding: '16px',
-  fontSize: 16,
+  fontSize: '16px',
   fontWeight: 600,
   lineHeight: '24px',
+
+  ':hover': {
+    background: 'none'
+  },
+
+  span: {
+    color: isDisable ? 'rgba(255, 117, 0, 0.5)' : '#FF7500'
+  },
+
+  svg: {
+    color: isDisable ? 'rgba(255, 117, 0, 0.5)' : '#FF7500'
+  },
+
+  [theme.breakpoints.down('xl')]: {
+    fontSize: '14px',
+    padding: '0px',
+
+    svg: {
+      fontSize: '18px',
+    },
+  }
 }))

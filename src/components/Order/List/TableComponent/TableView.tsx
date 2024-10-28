@@ -1,19 +1,37 @@
-import { Box } from "@mui/material"
+import { Box, styled } from "@mui/material"
 import EntriesPerPages from "./EntriesPerPages"
 import Search from "./Search"
 import TableComponent from "./TableComponent"
 
 const TableView = () => {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px', padding: '10px 0px' }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0px 12px' }}>
+    <TableAreaWrapper>
+      <FilterWrapper>
         <EntriesPerPages />
         <Search />
-      </Box>
+      </FilterWrapper>
       <Box>
         <TableComponent />
       </Box>
-    </Box>
+    </TableAreaWrapper>
   )
 }
 export default TableView
+
+const TableAreaWrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '20px',
+  padding: '10px 0px',
+
+  [theme.breakpoints.down('xl')]: {
+    padding: '0px',
+  }
+}))
+
+const FilterWrapper = styled(Box)(() => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  padding: '0px 12px'
+}))

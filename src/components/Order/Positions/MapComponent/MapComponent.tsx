@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, styled } from '@mui/material';
 import RoomIcon from '@mui/icons-material/Room';
 import map from '../../../../assets/map.png'
 import MarkerInformation from './MarkerInformation';
@@ -26,7 +26,7 @@ const MapComponent = ({ handleOpenModal }: MapComponentProps) => {
   };
 
   return (
-    <Box sx={{ position: 'relative', width: '100%', minHeight: '526px', marginTop: '10px' }}>
+    <MapComponentWrapper>
       <img
         src={map}
         alt="map-img"
@@ -47,22 +47,10 @@ const MapComponent = ({ handleOpenModal }: MapComponentProps) => {
           onMouseEnter={(e) => handleMouseEnter(e, data.id)}
           onMouseLeave={handleMouseLeave}
         >
-          <Typography sx={{
-            fontSize: '14px',
-            fontWeight: 400,
-            lineHeight: '20px',
-            color: '#4A5568'
-          }}>
+          <Text>
             {data.code}
-          </Typography>
-          <RoomIcon
-            key={data.id}
-            sx={{
-              fontSize: '40px',
-              color: '#FF7500',
-              cursor: 'pointer',
-            }}
-          />
+          </Text>
+          <LocationIcon key={data.id} />
           {activeMarker === data.id && (
             <MarkerInformation
               anchorEl={anchorEl}
@@ -73,8 +61,41 @@ const MapComponent = ({ handleOpenModal }: MapComponentProps) => {
           )}
         </Box>
       ))}
-    </Box>
+    </MapComponentWrapper>
   );
 };
 
 export default MapComponent;
+
+const MapComponentWrapper = styled(Box)(({ theme }) => ({
+  position: 'relative',
+  width: '100%',
+  minHeight: '526px',
+  marginTop: '10px',
+
+  [theme.breakpoints.down('xl')]: {
+    minHeight: 'auto',
+  }
+}))
+
+const Text = styled(Typography)(({ theme }) => ({
+  fontSize: '14px',
+  fontWeight: 400,
+  lineHeight: '20px',
+  color: '#4A5568',
+
+  [theme.breakpoints.down('xl')]: {
+    fontSize: '12px',
+    fontWeight: 500,
+  }
+}))
+
+const LocationIcon = styled(RoomIcon)(({ theme }) => ({
+  fontSize: '40px',
+  color: '#FF7500',
+  cursor: 'pointer',
+
+  [theme.breakpoints.down('xl')]: {
+    fontSize: '28px',
+  }
+}))
