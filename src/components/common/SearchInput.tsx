@@ -8,7 +8,7 @@ const SearchInput = () => {
       placeholder="Find Client"
       endAdornment={
         <InputAdornment position="end">
-          <Search sx={{ color: '#A0AEC0' }} />
+          <SearchIcon sx={{ color: '#A0AEC0' }} />
         </InputAdornment>
       }
     />
@@ -16,7 +16,7 @@ const SearchInput = () => {
 }
 export default SearchInput
 
-const Input = styled(OutlinedInput)(() => ({
+const Input = styled(OutlinedInput)(({ theme }) => ({
   '&.MuiOutlinedInput-root': {
     width: 323,
     height: 40,
@@ -43,4 +43,29 @@ const Input = styled(OutlinedInput)(() => ({
     lineHeight: '19.36px',
     textAlign: 'left',
   },
+
+  [theme.breakpoints.down('xl')]: {
+    '&.MuiOutlinedInput-root': {
+      width: 250,
+      height: 32,
+      borderRadius: 20,
+    },
+
+    input: {
+      color: '#A0AEC0',
+      padding: '0px 28px 0px 16px',
+      fontSize: 14,
+      fontWeight: 400,
+      lineHeight: '16px',
+      textAlign: 'left',
+    },
+  },
 }));
+
+const SearchIcon = styled(Search)(({ theme }) => ({
+  [theme.breakpoints.down('xl')]: {
+    width: 'auto',
+    height: 20,
+
+  }
+}))

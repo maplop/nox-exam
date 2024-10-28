@@ -7,25 +7,42 @@ interface FormControlProps {
 
 const FormControl = ({ label, value }: FormControlProps) => {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-      <Typography sx={{
-        fontSize: 16,
-        fontWeight: 400,
-        lineHeight: '24px',
-        textAlign: 'left',
-        color: '#737791',
-      }}>{label}</Typography>
+    <Wrapper>
+      <Label>{label}</Label>
       <Input
         type='text'
         value={value}
         fullWidth
       />
-    </Box>
+    </Wrapper>
   )
 }
 export default FormControl
 
-const Input = styled(OutlinedInput)(() => ({
+const Wrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '10px',
+
+  [theme.breakpoints.down('xl')]: {
+    gap: '4px',
+  }
+
+}))
+
+const Label = styled(Typography)(({ theme }) => ({
+  fontSize: 16,
+  fontWeight: 400,
+  lineHeight: '24px',
+  textAlign: 'left',
+  color: '#737791',
+
+  [theme.breakpoints.down('xl')]: {
+    fontSize: 14,
+  }
+}))
+
+const Input = styled(OutlinedInput)(({ theme }) => ({
   '&.MuiOutlinedInput-root': {
     height: 40,
     borderRadius: '4px',
@@ -51,4 +68,16 @@ const Input = styled(OutlinedInput)(() => ({
     lineHeight: '19.36px',
     textAlign: 'left',
   },
+
+
+  [theme.breakpoints.down('xl')]: {
+    '&.MuiOutlinedInput-root': {
+      height: 32,
+      borderRadius: '4px',
+    },
+
+    input: {
+      fontSize: 14,
+    },
+  }
 }));

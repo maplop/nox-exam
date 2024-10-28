@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material"
+import { Box, styled, Typography } from "@mui/material"
 import AccordionMenuItem from "./AccordionMenuItem";
 
 const AccordionMenu = () => {
@@ -21,15 +21,9 @@ const AccordionMenu = () => {
 
   return (
     <Box>
-      <Typography sx={{
-        fontSize: '16px',
-        fontWeight: 700,
-        lineHeight: '24px',
-        color: '#737791',
-        textAlign: 'left'
-      }}>
+      <MenuTitle>
         Nomenclators
-      </Typography>
+      </MenuTitle>
       {menuItems.map((menuItem, index) => (
         <AccordionMenuItem key={index} item={menuItem} />
       ))}
@@ -37,3 +31,16 @@ const AccordionMenu = () => {
   )
 }
 export default AccordionMenu
+
+const MenuTitle = styled(Typography)(({ theme }) => ({
+  fontSize: '16px',
+  fontWeight: 700,
+  lineHeight: '24px',
+  color: '#737791',
+  textAlign: 'left',
+
+  [theme.breakpoints.down('xl')]: {
+    fontSize: '14px',
+    fontWeight: 600,
+  }
+}))

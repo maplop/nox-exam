@@ -25,11 +25,7 @@ const ProductsTable: React.FC = () => {
                 <TCellBody>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minWidth: '36px', minHeight: '34px' }}>
-                      <img src={product.urlImg} alt='product-img' style={{
-                        width: '36px',
-                        height: '34px',
-                        objectFit: 'cover',
-                      }} />
+                      <Img src={product.urlImg} alt='product-img' />
                     </Box>
                     <Box>
                       {product.name}
@@ -49,7 +45,7 @@ const ProductsTable: React.FC = () => {
 
 export default ProductsTable;
 
-const TCell = styled(TableCell)(() => ({
+const TCell = styled(TableCell)(({ theme }) => ({
   padding: 0,
   paddingLeft: 24,
   minWidth: '176.67px',
@@ -61,10 +57,16 @@ const TCell = styled(TableCell)(() => ({
   letterSpacing: '0.05em',
   textAlign: 'left',
   color: '#4A5568',
-  border: 'none'
+  border: 'none',
+
+  [theme.breakpoints.down('xl')]: {
+    paddingLeft: 20,
+    minWidth: '150px',
+    height: 32,
+  }
 }))
 
-const TCellBody = styled(TableCell)(() => ({
+const TCellBody = styled(TableCell)(({ theme }) => ({
   padding: '14px 0px 14px 24px',
   minWidth: '176.67px',
   fontSize: 14,
@@ -72,5 +74,23 @@ const TCellBody = styled(TableCell)(() => ({
   lineHeight: '20px',
   textAlign: 'left',
   color: '#4A5568',
-  border: 'none'
+  border: 'none',
+
+  [theme.breakpoints.down('xl')]: {
+    fontSize: 12,
+    padding: '10px 0px 10px 24px',
+    minWidth: '150px',
+    height: 32,
+  }
+}))
+
+const Img = styled('img')(({ theme }) => ({
+  width: '36px',
+  height: '34px',
+  objectFit: 'cover',
+
+  [theme.breakpoints.down('xl')]: {
+    width: '28px',
+    height: 'auto',
+  }
 }))

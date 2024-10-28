@@ -1,11 +1,20 @@
-import { Box } from "@mui/material"
+import { Box, styled } from "@mui/material"
 import logo from "../../assets/logo.png"
 
 const Logo = () => {
   return (
-    <Box>
+    <LogoWrapper>
       <img src={logo} alt="logo-img" />
-    </Box>
+    </LogoWrapper>
   )
 }
 export default Logo
+
+const LogoWrapper = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down('xl')]: {
+    img: {
+      width: 'auto',
+      height: '52px',
+    }
+  }
+}))

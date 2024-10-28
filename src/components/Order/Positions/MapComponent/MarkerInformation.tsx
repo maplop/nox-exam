@@ -16,7 +16,7 @@ const MarkerInformation = ({ anchorEl, onClose, info, handleOpenModal }: MarkerI
   const navigate = useNavigate();
 
   return (
-    <Popover
+    <PopoverWrapper
       open={open}
       anchorEl={anchorEl}
       onClose={onClose}
@@ -30,54 +30,15 @@ const MarkerInformation = ({ anchorEl, onClose, info, handleOpenModal }: MarkerI
       }}
       disableRestoreFocus
       disableScrollLock
-      sx={{
-        '.MuiPopover-paper': {
-          width: 248,
-          borderRadius: '5px',
-          border: '1px solid #CBD5E0',
-          padding: '10px',
-          boxShadow: 'none',
-          position: 'relative',
-          overflow: 'visible',
-          background: '#FFF',
-        }
-      }}
     >
-      <Box
-        sx={{
-          position: 'absolute',
-          top: -9,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '0px',
-          height: '0px',
-          borderLeft: '9px solid transparent',
-          borderRight: '9px solid transparent',
-          borderBottom: '9px solid white',
-        }}
-      />
+      <Arrow />
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        <Typography sx={{
-          fontFamily: "'Inter', sans-serif",
-          fontSize: '14px',
-          fontWeight: 400,
-          lineHeight: '20px',
-          textAlign: 'left',
-          color: 'rgba(0, 0, 0, 0.36)'
-        }}>
+        <AddressText>
           {info.address}
-        </Typography>
-        <Typography sx={{
-          fontSize: '14px',
-          fontWeight: 400,
-          lineHeight: '20px',
-          textAlign: 'left',
-          color: '#4A5568',
-          textTransform: 'uppercase',
-          padding: '10px 0px',
-        }}>
+        </AddressText>
+        <PalceText>
           {info.place}
-        </Typography>
+        </PalceText>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <Btn
             variant="outlined"
@@ -105,12 +66,69 @@ const MarkerInformation = ({ anchorEl, onClose, info, handleOpenModal }: MarkerI
           </Btn>
         </Box>
       </Box>
-    </Popover>
+    </PopoverWrapper>
   )
 }
 export default MarkerInformation
 
-const Btn = styled(Button)(() => ({
+const PopoverWrapper = styled(Popover)(({ theme }) => ({
+  '.MuiPopover-paper': {
+    width: 248,
+    borderRadius: '5px',
+    border: '1px solid #CBD5E0',
+    padding: '10px',
+    boxShadow: 'none',
+    position: 'relative',
+    overflow: 'visible',
+    background: '#FFF',
+
+    [theme.breakpoints.down('xl')]: {
+      width: 220,
+    }
+  }
+}))
+
+const Arrow = styled(Box)(() => ({
+  position: 'absolute',
+  top: -9,
+  left: '50%',
+  transform: 'translateX(-50%)',
+  width: '0px',
+  height: '0px',
+  borderLeft: '9px solid transparent',
+  borderRight: '9px solid transparent',
+  borderBottom: '9px solid white',
+}))
+
+const AddressText = styled(Typography)(({ theme }) => ({
+  fontFamily: "'Inter', sans-serif",
+  fontSize: '14px',
+  fontWeight: 400,
+  lineHeight: '20px',
+  textAlign: 'left',
+  color: 'rgba(0, 0, 0, 0.36)',
+
+  [theme.breakpoints.down('xl')]: {
+    fontSize: '13px',
+  }
+}))
+
+const PalceText = styled(Typography)(({ theme }) => ({
+  fontSize: '14px',
+  fontWeight: 400,
+  lineHeight: '20px',
+  textAlign: 'left',
+  color: '#4A5568',
+  textTransform: 'uppercase',
+  padding: '10px 0px',
+
+  [theme.breakpoints.down('xl')]: {
+    fontSize: '13px',
+    padding: '0px',
+  }
+}))
+
+const Btn = styled(Button)(({ theme }) => ({
   borderRadius: '16px',
   boxShadow: 'none',
   height: '32px',
@@ -120,5 +138,12 @@ const Btn = styled(Button)(() => ({
   fontSize: '14px',
   fontWeight: 600,
   lineHeight: '20px',
-  textTransform: 'none'
+  textTransform: 'none',
+
+  [theme.breakpoints.down('xl')]: {
+    fontSize: '12px',
+    height: '24px',
+    padding: '0px 8px',
+  }
+
 }))

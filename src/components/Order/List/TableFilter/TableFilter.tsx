@@ -1,29 +1,15 @@
-import { Box, Typography } from "@mui/material"
+import { Box } from "@mui/material"
 import DateInputGroup from "./DateInputGroup"
+import SectionTitle from "../../../common/SectionTitle"
 
 const TableFilter = () => {
   return (
     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', }}>
-      <Box>
-        <Typography sx={{
-          fontSize: '20px',
-          fontWeight: 600,
-          lineHeight: '30px',
-          textAlign: 'left',
-          color: '#05004E'
-        }}>Orders</Typography>
-        <Typography sx={{
-          fontSize: '16px',
-          fontWeight: 400,
-          lineHeight: '24px',
-          textAlign: 'left',
-          color: '#737791'
-        }}
-        >Order Summary</Typography>
-      </Box>
-      <Box sx={{ padding: '10px' }}>
-        <DateInputGroup />
-      </Box>
+      <SectionTitle
+        title="Orders"
+        subtitle="Order Summary"
+      />
+      <DateInputGroup />
     </Box>
   )
 }

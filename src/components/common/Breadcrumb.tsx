@@ -1,4 +1,4 @@
-import { Breadcrumbs, Link, Typography } from '@mui/material';
+import { Breadcrumbs, Link, styled, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useLocation, Link as RouterLink } from 'react-router-dom';
 import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined';
 
@@ -13,6 +13,9 @@ const BreadcrumbsComponent = () => {
   const location = useLocation();
   const pathSegments = location.pathname.split('/').filter(Boolean);
 
+  const theme = useTheme();
+  const isDownXL = useMediaQuery(theme.breakpoints.down('xl'));
+
   return (
     <Breadcrumbs aria-label="breadcrumb" separator={<ChevronRightOutlinedIcon />}>
 
@@ -25,11 +28,11 @@ const BreadcrumbsComponent = () => {
               component={RouterLink}
               to={routeTo}
               style={{
-                fontSize: '16px',
-                fontWeight: 600,
+                fontSize: isDownXL ? '14px' : '16px',
+                fontWeight: isDownXL ? 500 : 600,
                 lineHeight: '24px',
                 textDecoration: 'none',
-                color: '#718096'
+                color: isDownXL ? '#4A5568' : '#718096',
               }}
             >
               {capitalizeWords(segment)}
@@ -37,18 +40,21 @@ const BreadcrumbsComponent = () => {
           );
         })
       ) : (
-        <Typography sx={{
-          fontSize: '16px',
-          fontWeight: 600,
-          lineHeight: '24px',
-          textDecoration: 'none',
-          color: '#718096'
-        }}>
+        <Text>
           Home
-        </Typography>
+        </Text>
       )}
     </Breadcrumbs>
   );
 };
 
 export default BreadcrumbsComponent
+
+const Text = styled(Typography)(() => ({
+  fontSize: '16px',
+  fontWeight: 600,
+  lineHeight: '24px',
+  textDecoration: 'none',
+  color: '#718096',
+}))
+

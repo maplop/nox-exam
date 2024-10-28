@@ -1,30 +1,15 @@
-import { Box, Button, Typography } from "@mui/material"
+import { Box, Button } from "@mui/material"
 import StatusTable from "./StatusTable"
+import SectionTitle from "../../../common/SectionTitle"
 
 const StatusComponent = () => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
-        <Box>
-          <Typography sx={{
-            fontSize: '20px',
-            fontWeight: 600,
-            lineHeight: '30px',
-            textAlign: 'left',
-            color: '#05004E'
-          }}>
-            Status
-          </Typography>
-          <Typography sx={{
-            fontSize: '16px',
-            fontWeight: 400,
-            lineHeight: '24px',
-            textAlign: 'left',
-            color: '#737791'
-          }}>
-            Status Orders
-          </Typography>
-        </Box>
+        <SectionTitle
+          title="Status"
+          subtitle="            Status Orders"
+        />
         <Button
           variant="contained"
           disableRipple
